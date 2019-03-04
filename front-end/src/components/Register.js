@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 
 class Register extends Component {
   render() {
     return (
       <div className="App">
+        <a href="/">Home</a>
+
         <header className="App-header">
         <h1>Register</h1>
-          <a href="/register">Register</a>
 
           <div>First name:</div>
           <input type="text" name="email"></input>

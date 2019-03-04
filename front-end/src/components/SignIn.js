@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 
 class SignIn extends Component {
   render() {
     return (
       <div className="App">
+        <a href="/">Home</a>
         <header className="App-header">
         <h1>Sign in</h1>
 
