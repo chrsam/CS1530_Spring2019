@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Register from './Register';
+import SignIn from './SignIn';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <a href="/signin">Sign in</a>
         </header>
         <Register></Register>
+        <SignIn></SignIn>
       </div>
       
     );
