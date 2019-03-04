@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class SignIn extends Component {
   render() {
     return (
       <div className="App">
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
         <header className="App-header">
         <h1>Sign in</h1>
 
