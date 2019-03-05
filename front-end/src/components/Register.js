@@ -19,6 +19,7 @@ class Register extends Component {
       password: ""
     };
 
+    this.submit = this.submit.bind(this);
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -26,6 +27,28 @@ class Register extends Component {
     event.preventDefault(); 
     // REST calls go here
     console.log("Register button clicked");
+
+    // POST the user's name, email, and password
+    fetch('http://localhost:8000', {     // 8000 is the default port for django
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // Enable CORS?
+      },
+      body: JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+      })
+    })
+    .then(
+      response => {
+        // Handle the response from the server
+        console.log(response);
+      }
+    );
   }
 
   handleChange(event) {
