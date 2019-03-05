@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 
 class Register extends Component {
 
+  componentDidMount() {
+    document.title = "Register | RateMyClass"
+  }
+
+
   constructor(props) {
     super(props);
 

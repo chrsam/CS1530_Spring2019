@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 class SignIn extends Component {
 
+  componentDidMount() {
+    document.title = "Sign In | RateMyClass"
+  }
+
   constructor(props) {
     super(props);
 
