@@ -47,7 +47,7 @@ class Register extends Component {
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange}></input>
 
           <div>Password:</div>
-          <input type="text" name="password" value={this.state.password} onChange={this.handleChange}></input>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
 
           <br/>
           <button type="button" onClick={this.submit}>Register</button>
