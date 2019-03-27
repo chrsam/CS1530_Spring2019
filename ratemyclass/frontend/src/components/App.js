@@ -27,8 +27,8 @@ class App extends Component {
                     <AddCourseForm />
                     <Switch>
                         <PrivateRoute exact path="/" component={Courses} />
-                        <PrivateRoute exact path="/register" component={Register} />
-                        <PrivateRoute exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/login" component={Login} />
                     </Switch>
                 </Router>            
             </Provider>

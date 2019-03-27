@@ -26,11 +26,8 @@ export const loadUser = () => (dispatch, getState) => {
             });
         })
         .catch(error => {
-            console.log("error auth");
-            dispatch(returnErrors(error.response.data, error.response.status));
             dispatch({
                 type: AUTH_ERROR
             });
-            console.log("yay");
         });
 }
