@@ -1102,11 +1102,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!***************************************************!*\
   !*** ./ratemyclass/frontend/src/actions/types.js ***!
   \***************************************************/
-/*! exports provided: GET_COURSES, DELETE_COURSE, ADD_COURSE */
+/*! exports provided: GET_COURSES, DELETE_COURSE, ADD_COURSE, USER_LOADING, USER_LOADED, AUTH_ERROR */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"GET_COURSES\", function() { return GET_COURSES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DELETE_COURSE\", function() { return DELETE_COURSE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ADD_COURSE\", function() { return ADD_COURSE; });\nvar GET_COURSES = 'GET_COURSES';\nvar DELETE_COURSE = 'DELETE_COURSE';\nvar ADD_COURSE = 'ADD_COURSE';\n\n//# sourceURL=webpack:///./ratemyclass/frontend/src/actions/types.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"GET_COURSES\", function() { return GET_COURSES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DELETE_COURSE\", function() { return DELETE_COURSE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ADD_COURSE\", function() { return ADD_COURSE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"USER_LOADING\", function() { return USER_LOADING; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"USER_LOADED\", function() { return USER_LOADED; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AUTH_ERROR\", function() { return AUTH_ERROR; });\nvar GET_COURSES = 'GET_COURSES';\nvar DELETE_COURSE = 'DELETE_COURSE';\nvar ADD_COURSE = 'ADD_COURSE';\nvar USER_LOADING = 'USER_LOADING';\nvar USER_LOADED = 'USER_LOADED';\nvar AUTH_ERROR = 'AUTH_ERROR';\n\n//# sourceURL=webpack:///./ratemyclass/frontend/src/actions/types.js?");
 
 /***/ }),
 
@@ -1194,6 +1194,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 
 /***/ }),
 
+/***/ "./ratemyclass/frontend/src/reducers/auth.js":
+/*!***************************************************!*\
+  !*** ./ratemyclass/frontend/src/reducers/auth.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _actions_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types */ \"./ratemyclass/frontend/src/actions/types.js\");\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n\nvar initialState = {\n  token: localStorage.getItem('token'),\n  isAuthenticated: null,\n  isLoading: false,\n  user: null\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case _actions_types__WEBPACK_IMPORTED_MODULE_0__[\"USER_LOADING\"]:\n      return _objectSpread({}, state, {\n        isLoading: true\n      });\n\n    case _actions_types__WEBPACK_IMPORTED_MODULE_0__[\"USER_LOADED\"]:\n      return _objectSpread({}, state, {\n        isAuthenticated: true,\n        isLoading: false,\n        user: action.payload\n      });\n\n    case _actions_types__WEBPACK_IMPORTED_MODULE_0__[\"AUTH_ERROR\"]:\n      localStorage.removeItem('token');\n      return _objectSpread({}, state, {\n        token: null,\n        isLoading: false,\n        user: action.payload\n      });\n\n    default:\n      return state;\n  }\n});\n\n//# sourceURL=webpack:///./ratemyclass/frontend/src/reducers/auth.js?");
+
+/***/ }),
+
 /***/ "./ratemyclass/frontend/src/reducers/courses.js":
 /*!******************************************************!*\
   !*** ./ratemyclass/frontend/src/reducers/courses.js ***!
@@ -1214,7 +1226,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _act
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var _courses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./courses */ \"./ratemyclass/frontend/src/reducers/courses.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__[\"combineReducers\"])({\n  courses: _courses__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n}));\n\n//# sourceURL=webpack:///./ratemyclass/frontend/src/reducers/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var _courses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./courses */ \"./ratemyclass/frontend/src/reducers/courses.js\");\n/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ \"./ratemyclass/frontend/src/reducers/auth.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__[\"combineReducers\"])({\n  courses: _courses__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  auth: _auth__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n}));\n\n//# sourceURL=webpack:///./ratemyclass/frontend/src/reducers/index.js?");
 
 /***/ }),
 
