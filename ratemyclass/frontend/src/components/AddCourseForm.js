@@ -23,6 +23,11 @@ export class AddCourseForm extends Component {
         const class_code = departmentCode + courseNumber;
         const course = { name, class_code }; // These variable names have to match the python model (I think)
         this.props.addCourse(course);
+        this.setState({
+            name: '',
+            departmentCode: '',
+            courseNumber: ''
+        })
     }
     
   render() {
