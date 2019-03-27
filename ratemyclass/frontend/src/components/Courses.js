@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCourses, deleteCourse } from '../actions/courses'
+import { getCourses, deleteCourse } from '../actions/courses';
+import AddCourseForm from './AddCourseForm';
 
 export class Courses extends Component {
     static propTypes = {
@@ -39,6 +40,7 @@ export class Courses extends Component {
                 )) }
             </tbody>
         </table>
+        <AddCourseForm/>
       </Fragment>
     )
   }

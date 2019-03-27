@@ -24,13 +24,12 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <Header />
-                    <AddCourseForm />
                     <Switch>
                         <PrivateRoute exact path="/" component={Courses} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={Login} />
                     </Switch>
-                </Router>            
+                </Router>   
             </Provider>
         )
     }
