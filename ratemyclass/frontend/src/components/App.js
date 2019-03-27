@@ -9,9 +9,16 @@ import Login from './accounts/Login';
 import Register from './accounts/Register';
 
 import { Provider } from 'react-redux';
-import store from '../store'
+import store from '../store';
+import { loadUser } from '../actions/auth';
+import PrivateRoute from './common/PrivateRoute';
+
 
 class App extends Component {
+    componentDidMount() {
+        store.dispatch(loadUser());
+    }
+
     render() {
         return (
             <Provider store={store}>
@@ -19,9 +26,9 @@ class App extends Component {
                     <Header />
                     <AddCourseForm />
                     <Switch>
-                        <Route exact path="/" component={Courses} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/login" component={Login} />
+                        <PrivateRoute exact path="/" component={Courses} />
+                        <PrivateRoute exact path="/register" component={Register} />
+                        <PrivateRoute exact path="/login" component={Login} />
                     </Switch>
                 </Router>            
             </Provider>

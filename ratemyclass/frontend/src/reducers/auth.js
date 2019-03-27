@@ -22,12 +22,15 @@ export default function(state = initialState, action) {
                 user: action.payload
             }
         case AUTH_ERROR:
+            console.log("here");
             localStorage.removeItem('token');
+            console.log("")
             return {
                 ...state,
                 token: null,
-                isLoading: false,
-                user: action.payload
+                isAuthenticated: false,
+                user: null,
+                isLoading: false
             }
         default: 
             return state;

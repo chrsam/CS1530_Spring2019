@@ -3,6 +3,7 @@ import { USER_LOADED, USER_LOADING, AUTH_ERROR } from './types';
 
 // Checks the token and loads the user
 export const loadUser = () => (dispatch, getState) => {
+    console.log("hello");
     dispatch({type: USER_LOADING});
 
     const token = getState().auth.token;
@@ -11,12 +12,12 @@ export const loadUser = () => (dispatch, getState) => {
         headers: {
             'Content-Type': 'application/json'
         }
-    }
+    };
 
     if (token) {
         config.headers['Authorization'] = `Token ${token}`;
     }
-
+    console.log("making request" + token);
     axios.get("/api/auth/user", config)
         .then(response => {
             dispatch({
@@ -25,6 +26,11 @@ export const loadUser = () => (dispatch, getState) => {
             });
         })
         .catch(error => {
+            console.log("error auth");
             dispatch(returnErrors(error.response.data, error.response.status));
+            dispatch({
+                type: AUTH_ERROR
+            });
+            console.log("yay");
         });
 }
