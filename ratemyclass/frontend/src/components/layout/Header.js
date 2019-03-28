@@ -34,6 +34,9 @@ export class Header extends Component {
         <li className="nav-item">
           <Link to="/login" className="nav-link">Login</Link>
         </li>
+        <li className="nav-item">
+              <Link to="/" className="nav-link">Home</Link>
+        </li>
       </ul>
     );
     return (
@@ -45,9 +48,7 @@ export class Header extends Component {
             <a className="navbar-brand" href="#">RateMyClass</a>
             </div>
             { isAuthenticated ? authLinks : guestLinks}
-            <li className="nav-item">
-              <Link to="/courses" className="nav-link">Courses</Link>
-            </li>
+
         </nav>
     )
   }

@@ -9,15 +9,13 @@ class RegistrationAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
     def post(self, request, *args, **kwargs):
-        print("HERE")
         serializer = self.get_serializer(data=request.data)
-        print("HERE")
         print(request.data)
-        print("HERE")
-        serializer.is_valid(raise_exception = True)
-        print("HERE")
+        try:
+            serializer.is_valid(raise_exception = True)
+        except:
+            print("qwerty")
         user = serializer.save()
-        print("2")
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
             "token": AuthToken.objects.create(user)

@@ -56,12 +56,21 @@ export const register = ({username, email, password}) => dispatch => {
     console.log(body)
     axios.post("/api/auth/register", body, config)
         .then(response => {
-            dispatch({
-                type: REGISTER_SUCCESS,
-                payload: response.data
-            });
+            try {
+                console.log("Registration successful");
+                dispatch({
+                    type: REGISTER_SUCCESS,
+                    payload: response.data
+                });
+            }
+            catch (error) {
+                console.log("Error dispatching REGISTER_SUCCESS");
+                console.log(error);
+            }
         })
         .catch(error => {
+            console.log("Registration failed");
+
             dispatch({
                 type: REGISTER_FAIL
             });
