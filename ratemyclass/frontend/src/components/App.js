@@ -25,11 +25,11 @@ class App extends Component {
                 <Router>
                     <Header />
                     <Switch>
-                        <PrivateRoute exact path="/" component={Courses} />
+                        <Route exact path="/courses" component={Courses} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={Login} />
                     </Switch>
-                </Router>   
+                </Router>
             </Provider>
         )
     }
