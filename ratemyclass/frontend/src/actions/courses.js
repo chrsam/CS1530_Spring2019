@@ -27,6 +27,7 @@ export const deleteCourse = (id) => dispatch => {
 
 // ADD COURSE 
 export const addCourse = (course) => dispatch => {
+
     axios.post("/api/courses/", course)
         .then(response => {
             dispatch({

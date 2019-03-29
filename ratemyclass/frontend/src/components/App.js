@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import PrivateRoute from './common/PrivateRoute';
+import NewReview from './NewReview';
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
                         <Route exact path="/" component={Courses} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/review" component={NewReview} />
                     </Switch>
                 </Router>
             </Provider>

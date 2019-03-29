@@ -30,14 +30,16 @@ export const login = (username, password) => dispatch => {
     // request body
     const body = JSON.stringify({username, password});
 
-    axios.get("/api/auth/login", body,config)
+    axios.post("/api/auth/login", body,config)
         .then(response => {
+            console.log("Login success");
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: response.data
             });
         })
         .catch(error => {
+            console.log("Login fail");
             dispatch({
                 type: LOGIN_FAIL
             });
