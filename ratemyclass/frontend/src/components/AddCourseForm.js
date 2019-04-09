@@ -34,7 +34,7 @@ export class AddCourseForm extends Component {
     const { name, departmentCode, courseNumber } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <h2>Add New Course:</h2>
+        <h2>Add New TEST:</h2>
         <form onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label>Name of course:</label>
