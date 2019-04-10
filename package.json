@@ -1,23 +1,15 @@
 {
-  "name": "CS1530-Spring2019",
+  "name": "RateMyClass",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./ratemyclass/frontend/src/index.js --output ./ratemyclass/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./ratemyclass/frontend/src/index.js --output ./ratemyclass/frontend/static/frontend/main.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pmulholland42/CS1530-Spring2019.git"
+    "dev": "webpack --mode development --watch ./RateMyClassManager/frontend/src/index.js --output ./RateMyClassManager/frontend/static/frontend/main.js",
+    "build": "webpack --mode production --watch ./RateMyClassManager/frontend/src/index.js --output ./RateMyClassManager/frontend/static/frontend/main.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pmulholland42/CS1530-Spring2019/issues"
-  },
-  "homepage": "https://github.com/pmulholland42/CS1530-Spring2019#readme",
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
@@ -30,11 +22,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
+    "react": "^16.8.6",
+    "react-alert": "^5.4.0",
+    "react-alert-template-basic": "^1.0.0",
+    "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
-    "react-star-ratings": "^2.3.0",
+    "react-transition-group": "^2.7.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"

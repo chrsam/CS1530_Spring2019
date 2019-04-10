@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "51817554125ed63ac41bc458be61ece473e52978e57df63821fd108ec664c062"
+            "sha256": "3a42a1181ea4f5eafe7afe83a04a404ab4f978cc4691e263364c24744aef895c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -88,36 +88,34 @@
             "index": "pypi",
             "version": "==2.1.7"
         },
-        "django-rest-knox": {
+        "django-rest-framework": {
             "hashes": [
-                "sha256:63c36a5aa3d273d821739c4716aacfadf00c51a50d7b68aed54a67a1209004dc",
-                "sha256:6f4126df24b6f142c1fde1c9207f6e0f4cd604cc4dc7a7fb66fab9361c4ccc77",
-                "sha256:a4ce42ba19fe6c39f72342290d2ac27721c075deefe99cb3b71e9265cdfa21ee"
+                "sha256:47a8f496fa69e3b6bd79f68dd7a1527d907d6b77f009e9db7cf9bb21cc565e4a"
             ],
             "index": "pypi",
-            "version": "==3.6.0"
+            "version": "==0.1.0"
+        },
+        "django-rest-knox": {
+            "hashes": [
+                "sha256:7cac6388d8cac57a5341d4261f51bf6d09556fa4be10868fb0e5ea886fdc9415",
+                "sha256:d2d3a35159f6dcab2712bd762e1d830bdee674f7047bb56822c20741f0aa1721",
+                "sha256:e55a3b9c8dea96679b9a5a1260e289943573dc015c0438a6d1cab91412732dd6"
+            ],
+            "index": "pypi",
+            "version": "==4.0.0"
         },
         "djangorestframework": {
             "hashes": [
                 "sha256:8a435df9007c8b7d8e69a21ef06650e3c0cbe0d4b09e55dd1bd74c89a75a9fcd",
                 "sha256:f7a266260d656e1cf4ca54d7a7349609dc8af4fe2590edd0ecd7d7643ea94a17"
             ],
-            "index": "pypi",
             "version": "==3.9.2"
         },
         "pycparser": {
             "hashes": [
-                "sha256:20882189c45a68d2d59ddfde8dd25b497c74eae0fd7b50e8e6d406105bef987b",
                 "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
             ],
             "version": "==2.19"
-        },
-        "pyopenssl": {
-            "hashes": [
-                "sha256:aeca66338f6de19d1aa46ed634c3b9ae519a64b458f8468aec688e7e3c20f200",
-                "sha256:c727930ad54b10fc157015014b666f2d8b41f70c0d03e83ab67624fd3dd5d1e6"
-            ],
-            "version": "==19.0.0"
         },
         "pytz": {
             "hashes": [
