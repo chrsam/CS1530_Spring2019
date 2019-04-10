@@ -13,8 +13,7 @@ import Homepage from './Homepage'
 import Alerts from './layout/Alerts';
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
-import NewReview from "./reviews/NewReview";
-
+import ViewCourse from "./courses/ViewCourse";
 import PrivateRoute from "./common/PrivateRoute";
 
 import { Provider } from  "react-redux";
@@ -46,7 +45,7 @@ class App extends Component {
                 <Route exact path = "/register" component = {Register} />
                 <Route exact path = "/login" component = {Login} />
                 <Route exact path = "/reviews" component = {ReviewDashboard} />
-                <Route exact path = "/newreview" component = {NewReview} />
+                <Route exact path = "/viewcourse" component = {ViewCourse} />
 
               </Switch>
               <Route exact path = "/" component = {Homepage} />

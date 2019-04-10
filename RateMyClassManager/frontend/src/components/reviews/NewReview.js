@@ -8,7 +8,7 @@ export class NewReview extends Component {
     state = {
         numStars: 0,
         reviewText: '',
-        courseID: 1
+        courseID: -1
     }
 
     static propTypes = {
@@ -40,11 +40,15 @@ export class NewReview extends Component {
       }
 
   render() {
-    const { reviewText } = this.state;
+    const { reviewText, courseID } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <h2>New Course Review:</h2>
+        <h2>New Review:</h2>
         <form onSubmit={this.onSubmit}>
+            <div className="form-group">
+                <label>Course ID:</label>
+                <input type="text" className="form-control" type="text" name="courseID" onChange={this.onChange} value={courseID} />
+            </div>
             <div className="form-group">
                 <label>Rating:</label>
                 <StarRatings rating={this.state.numStars} starRatedColor="gold" changeRating={this.changeRating} numberOfStars={5} name='numStars'/>
