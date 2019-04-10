@@ -53,7 +53,7 @@ export class Homepage extends Component {
       </div>
     )
     return (
-      <div class= "container">
+      <div className= "container">
       {isAuthenticated ? authLinks: guestLinks}
       </div>
 

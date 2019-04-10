@@ -67,6 +67,7 @@ export const register = ({username, email, password}) => dispatch => {
           payload: res.data
         })
     }).catch(err => {
+      console.log("error")
       dispatch(returnErrors(err.response.data, err.response.status))
       dispatch({type: REGISTER_FAIL})
     })
@@ -81,6 +82,7 @@ export const logout = () => (dispatch, getState) => {
           type: LOGOUT_SUCCESS
         })
     }).catch(err => {
+      console.log("logout error");
       dispatch(returnErrors(err.response.data, err.response.status))
     })
 }

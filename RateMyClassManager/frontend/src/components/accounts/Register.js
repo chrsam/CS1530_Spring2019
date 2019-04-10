@@ -19,7 +19,8 @@ export class Register extends Component {
   }
 
   onSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
+    console.log("submit");
     const {username, email, password, password2} = this.state;
     if (password !== password2) {
       this.props.createMessage({passwordsNotMatch:
