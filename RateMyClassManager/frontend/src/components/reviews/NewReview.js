@@ -41,7 +41,7 @@ export class NewReview extends Component {
     const { reviewText } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <h2>New Review for course {this.props.courseName}:</h2>
+        <h2>New review for course {this.props.courseName}:</h2>
         <form onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label>Rating:</label>

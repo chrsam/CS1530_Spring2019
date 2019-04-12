@@ -1,13 +1,15 @@
-import React, { Component, Fragment} from 'react';
-import AddReview from './AddReview';
+import React, { Component } from 'react'
 
-export default function ReviewDashboard() {
-  return(
-
-    <Fragment>
-    <h2>List of reviews goes here</h2>
-    </Fragment>
-
-  )
-
+export class ReviewDashboard extends Component {
+  render() {
+    return (
+      <div>
+        <h3>Reviews for {this.props.courseName}:</h3>
+        {/* TODO: query for reviews by course id */}
+      </div>
+    )
+  }
 }
+
+export default ReviewDashboard
+

@@ -13,7 +13,7 @@ export class CourseList extends Component {
   }
 
   componentDidMount() {
-    this.props.getCourses().then(() => {console.log("courses get!")});
+    this.props.getCourses();
   }
 
   render () {

@@ -1,4 +1,4 @@
-import { GET_COURSES, DELETE_COURSE, ADD_COURSE } from "../actions/types.js";
+import { GET_COURSES, GET_COURSE_BY_ID, DELETE_COURSE, ADD_COURSE } from "../actions/types.js";
 
 
 const initialState = {
@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         courses: action.payload
+      }
+    case GET_COURSE_BY_ID:
+      return {
+        ...state,
+        courses: [action.payload] // The response is a single course so make it into an array
       }
     case DELETE_COURSE:
       return {
