@@ -26,26 +26,27 @@ class Header extends Component {
 
           <li className="nav-item">
           <Link to="/courses" className ="nav-link">
-          Courses
+          All Courses
           </Link>
           </li>
           <li className="nav-item">
-          <Link to="/reviews" className ="nav-link">
-          Reviews
+          <Link to="/addcourse" className ="nav-link">
+          Add Course
           </Link>
           </li>
           <li className="nav-item">
-          <Link to="/mycourses" className ="nav-link">
-          My Courses
+          <Link to="/findcourses" className ="nav-link">
+          Find Courses
           </Link>
           </li>
 
 
           </ul>
+        {/*
         <form className="form-inline my-2 my-lg-1 ">
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form>*/}
 
         <ul className="navbar-nav ml-3">
         <li className="nav-item">

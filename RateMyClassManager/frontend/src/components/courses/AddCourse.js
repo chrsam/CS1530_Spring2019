@@ -10,7 +10,8 @@ export class AddCourse extends Component {
     name: '',
     university: '',
     prof: '',
-    class_code: ''
+    class_code: '',
+    submitted: false
   }
 
   static propTypes = {
@@ -21,19 +22,20 @@ export class AddCourse extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { name , university, prof, class_code, review} = this.state
-    const course = { name, university, prof, class_code, review}
+    const { name , university, prof, class_code} = this.state
+    const course = { name, university, prof, class_code}
     this.props.addCourse(course);
     this.setState({
       name: "",
       university: "",
       prof: "",
       class_code: "",
-      review: ""
+      review: "",
+      submitted: true
     });
   }
   render () {
-    const {name, university, prof, class_code, review} = this.state;
+    const {name, university, prof, class_code} = this.state;
     const {isAuthenticated} = this.props.auth
 
     const guestLinks = (
@@ -50,28 +52,25 @@ export class AddCourse extends Component {
 
     const authLinks = (
       <div className = "card card-body mt-5 mb-5">
-        <h2>Add a Course Review</h2>
+        <h2>Add a New Course</h2>
         <form onSubmit = {this.onSubmit}>
           <div className = "form-group">
             <label>Course Name</label>
-            <input className = "form-control" placeholder="Software Engineering" type = "text" name = "name" onChange = {this.onChange} value = {name} />
+            <input className = "form-control" placeholder="eg. Software Engineering" type = "text" name = "name" onChange = {this.onChange} value = {name} />
           </div>
           <div className = "form-group">
             <label>University</label>
-            <input className = "form-control" placeholder="University of Pittsburgh" type = "text" name = "university" onChange = {this.onChange} value = {university} />
+            <input className = "form-control" placeholder="eg. University of Pittsburgh" type = "text" name = "university" onChange = {this.onChange} value = {university} />
           </div>
           <div className = "form-group">
             <label>Professor</label>
-            <input className = "form-control" placeholder="Professor John Smith" type = "text" name = "prof" onChange = {this.onChange} value = {prof} />
+            <input className = "form-control" placeholder="eg. John Smith" type = "text" name = "prof" onChange = {this.onChange} value = {prof} />
           </div>
           <div className = "form-group">
             <label>Course Code</label>
-            <input className = "form-control" placeholder="CS1530" type = "text" name = "class_code" onChange = {this.onChange} value = {class_code} />
+            <input className = "form-control" placeholder="eg. CS1530" type = "text" name = "class_code" onChange = {this.onChange} value = {class_code} />
           </div>
-          <div className = "form-group">
-            <label>Course Code</label>
-            <textarea className = "form-control" placeholder="Review here..." type = "text" name = "review" onChange = {this.onChange} value = {review} />
-          </div>
+
           <div className = "form-group">
             <button type="sumbit" className = "btn btn-outline-success btn-lg btn-block"> Add Course </button>
           </div>
@@ -81,7 +80,7 @@ export class AddCourse extends Component {
     )
     return (
       <div className= "container">
-      {isAuthenticated ? authLinks: guestLinks}
+      {this.state.submitted ? (<Redirect to={"/viewcourse/" + 1}/>) : (isAuthenticated ? authLinks: guestLinks)}
       </div>
 
     )

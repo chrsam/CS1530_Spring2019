@@ -7,8 +7,7 @@ import StarRatings from 'react-star-ratings';
 export class NewReview extends Component {
     state = {
         numStars: 0,
-        reviewText: '',
-        courseID: -1
+        reviewText: ''
     }
 
     static propTypes = {
@@ -19,17 +18,16 @@ export class NewReview extends Component {
 
     onSubmit = event => {
         event.preventDefault();
-        const { numStars, reviewText, courseID } = this.state;
+        const { numStars, reviewText } = this.state;
         const review = {
             num_stars: numStars, 
             review_text: reviewText, 
-            course_id: courseID
+            course_id: this.props.courseID
         };
         this.props.addReview(review)
         this.setState({
             numStars: 0,
-            reviewText: '',
-            courseID: -1
+            reviewText: ''
         })
     }
 
@@ -40,15 +38,11 @@ export class NewReview extends Component {
       }
 
   render() {
-    const { reviewText, courseID } = this.state;
+    const { reviewText } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <h2>New Review:</h2>
+        <h2>New Review for course {this.props.courseName}:</h2>
         <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-                <label>Course ID:</label>
-                <input type="text" className="form-control" type="text" name="courseID" onChange={this.onChange} value={courseID} />
-            </div>
             <div className="form-group">
                 <label>Rating:</label>
                 <StarRatings rating={this.state.numStars} starRatedColor="gold" changeRating={this.changeRating} numberOfStars={5} name='numStars'/>

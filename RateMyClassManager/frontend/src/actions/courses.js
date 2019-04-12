@@ -1,18 +1,22 @@
 import axios from 'axios';
 import {createMessage, returnErrors} from './messages';
 import { tokenConfig } from './auth';
+import 'babel-polyfill'; // needed for async for some reason
 
 
 import { GET_COURSES, DELETE_COURSE, ADD_COURSE} from "./types";
 
 // GET COURSES
-export const getCourses = () => (dispatch, getState) => {
+export const getCourses = () => async (dispatch, getState) => {
   axios.get('/api/courses/', tokenConfig(getState))
   .then(res => {
     dispatch({
       type: GET_COURSES,
       payload: res.data
     })
+    console.log("returning data");
+    console.log(res.data);
+    return res.data;
   })
   .catch(err =>
     dispatch(returnErrors(err.response.data, err.response.status))
@@ -41,6 +45,7 @@ export const addCourse = course => (dispatch, getState)  => {
       type: ADD_COURSE,
       payload: res.data
     })
+    console.log(res.data);
   })
   .catch(err =>
     dispatch(returnErrors(err.response.data, err.response.status))

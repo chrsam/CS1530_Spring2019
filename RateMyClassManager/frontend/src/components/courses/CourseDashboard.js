@@ -7,7 +7,6 @@ export default function CourseDashboard() {
   return(
 
     <Fragment>
-    <AddCourse />
     <CourseList/>
 
     </Fragment>

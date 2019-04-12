@@ -19,6 +19,8 @@ import PrivateRoute from "./common/PrivateRoute";
 import { Provider } from  "react-redux";
 import store from "../store";
 import { loadUser }  from "../actions/auth";
+import { CourseList } from './courses/CourseList';
+import FindCourses from './courses/FindCourses';
 
 // Alert Options
 const alertOptions = {
@@ -45,7 +47,9 @@ class App extends Component {
                 <Route exact path = "/register" component = {Register} />
                 <Route exact path = "/login" component = {Login} />
                 <Route exact path = "/reviews" component = {ReviewDashboard} />
-                <Route exact path = "/viewcourse" component = {ViewCourse} />
+                <Route exact path = "/viewcourse/:id" component = {ViewCourse} />
+                <Route exact path = "/courselist" component = {CourseList} />
+                <Route exact path = "/findcourses" component = {FindCourses} />
 
               </Switch>
               <Route exact path = "/" component = {Homepage} />

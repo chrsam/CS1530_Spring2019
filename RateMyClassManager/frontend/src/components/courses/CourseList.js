@@ -13,7 +13,7 @@ export class CourseList extends Component {
   }
 
   componentDidMount() {
-    this.props.getCourses();
+    this.props.getCourses().then(() => {console.log("courses get!")});
   }
 
   render () {
@@ -22,7 +22,7 @@ export class CourseList extends Component {
     const guestLinks = (
       <Fragment>
       <div className = "container ml-3 mr-3">
-      <h2>Course Reviews</h2>
+      <h2>Courses</h2>
       {this.props.courses.map(course => (
         <div className = "container ml-3 mr-3 mt-3 mb-3">
         <div className="card shadow p-3 mb-5 bg-white rounded">
@@ -50,31 +50,27 @@ export class CourseList extends Component {
 
     const authLinks = (
       <Fragment>
-        <div className = " container ml-3 mr-3">
-        <h2>Course Reviews</h2>
+        <div className = "container ml-3 mr-3">
+        <br/>
+        <h2>Courses</h2>
         {this.props.courses.map(course => (
           <div className = "container ml-3 mr-3 mt-3 mb-3">
             <div className="card shadow p-3 mb-5 bg-white rounded">
               <div className="card-header">
-                <h2>{course.name}
-                <div className = "float-right">
-                  <button onClick = {this.props.deleteCourse.bind(this, course.id)} className = "btn btn-outline-dark  btn-sm">Delete</button>
-                </div>
-                </h2>
+                <Link to={"/viewcourse/" + course.id}><h3>{course.name}</h3></Link>
               </div>
             <div className="card-body">
-              <h4 className="card-title">{course.university}</h4>
               <ul>
+                <h5 className="card-title">{course.university}</h5>
                 <h5> Professor: {course.prof}</h5>
                 <h5> Course Code: {course.class_code}</h5>
-                <h5> Review: </h5>
-                <p>{course.review}</p>
               </ul>
             </div>
           </div>
           </div>
         ))}
-
+        <h3>Don't see the course you're looking for? <Link to="/addcourse">Click here to add it!</Link></h3>
+        <br/>
       </div>
 
 
@@ -94,28 +90,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { getCourses, deleteCourse})(CourseList)
-//
-// <table className = "table table-hover">
-//   <thead>
-//     <tr>
-//       <th>ID</th>
-//       <th>Course Name</th>
-//       <th>University</th>
-//       <th>Professor</th>
-//       <th>Class Code</th>
-//       <th />
-//     </tr>
-//   </thead>
-//   <tbody>
-//     {this.props.courses.map(course => (
-//       <tr key = {course.id}>
-//         <td>{course.id}</td>
-//         <td>{course.name}</td>
-//         <td>{course.university}</td>
-//         <td>{course.prof}</td>
-//         <td>{course.class_code}</td>
-//         <td><button onClick = {this.props.deleteCourse.bind(this, course.id)} className = "btn btn-outline-dark  btn-sm">Delete</button></td>
-//       </tr>
-//     ))}
-//   </tbody>
-// </table>
+
