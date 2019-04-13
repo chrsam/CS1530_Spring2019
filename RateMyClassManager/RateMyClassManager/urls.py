@@ -5,4 +5,5 @@ urlpatterns = [
     path('', include('frontend.urls')),
     path('', include('courses.urls')),
     path('', include('accounts.urls')),
+    path('', include('reviews.urls'))
 ]
