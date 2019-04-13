@@ -1,14 +1,16 @@
 // Reviews reducer
 
-import { GET_REVIEWS, ADD_REVIEW, DELETE_REVIEW } from '../actions/types.js';
+import { GET_REVIEWS_BY_COURSE_ID, ADD_REVIEW, DELETE_REVIEW } from '../actions/types.js';
 
 const initialState = {
     reviews: []
 }
 
 export default function(state = initialState, action) {
+    console.log("switch!");
     switch(action.type) {
-        case GET_REVIEWS:
+        case GET_REVIEWS_BY_COURSE_ID:
+            console.log("reviews reducer get reviews");
             return {
                 ...state,
                 reviews: action.payload

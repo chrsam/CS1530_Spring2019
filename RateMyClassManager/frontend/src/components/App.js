@@ -6,20 +6,18 @@ import { Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
 import Header from './layout/Header';
-import CourseDashboard from './courses/CourseDashboard';
 import AddCourse from './courses/AddCourse';
-import ReviewDashboard from './reviews/ReviewDashboard';
 import Homepage from './Homepage'
 import Alerts from './layout/Alerts';
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import ViewCourse from "./courses/ViewCourse";
+import CourseList from './courses/CourseList';
 import PrivateRoute from "./common/PrivateRoute";
 
 import { Provider } from  "react-redux";
 import store from "../store";
 import { loadUser }  from "../actions/auth";
-import { CourseList } from './courses/CourseList';
 import FindCourses from './courses/FindCourses';
 
 // Alert Options
@@ -42,12 +40,11 @@ class App extends Component {
             <Header />
             <Alerts />
               <Switch>
-                <Route exact path = "/courses" component = {CourseDashboard} />
+                <Route exact path = "/courses" component = {CourseList} />
                 <Route exact path = "/addcourse" component = {AddCourse} />
                 <Route exact path = "/register" component = {Register} />
                 <Route exact path = "/login" component = {Login} />
-                <Route exact path = "/reviews" component = {ReviewDashboard} />
-                <Route exact path = "/viewcourse/:id" component = {ViewCourse} />
+\                <Route exact path = "/viewcourse/:id" component = {ViewCourse} />
                 <Route exact path = "/courselist" component = {CourseList} />
                 <Route exact path = "/findcourses" component = {FindCourses} />
 

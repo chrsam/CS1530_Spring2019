@@ -1,12 +1,15 @@
 import axios from 'axios';
-import { ADD_REVIEW, DELETE_REVIEW, GET_REVIEWS } from './types';
+import { ADD_REVIEW, DELETE_REVIEW, GET_REVIEWS_BY_COURSE_ID } from './types';
 
-// GET REVIEWS
-export const getReviews = () => dispatch => {
-    axios.get('/api/reviews/')
+// GET REVIEWS BY COURSE ID
+export const getReviewsByCourseID = (courseID) => dispatch => {
+    console.log("getting reviews...");
+    axios.get('/api/reviews?course_id=' + courseID)
         .then(response => {
+            console.log("review action got response");
+            console.log(response.data);
             dispatch({
-                type: GET_REVIEWS,
+                type: GET_REVIEWS_BY_COURSE_ID,
                 payload: response.data
             });
         })

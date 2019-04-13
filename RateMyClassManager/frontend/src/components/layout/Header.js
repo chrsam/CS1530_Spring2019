@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CourseDashboard from "../courses/CourseDashboard";
 import { Link , NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';

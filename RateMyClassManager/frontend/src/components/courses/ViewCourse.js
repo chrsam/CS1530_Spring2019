@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NewReview from "../reviews/NewReview";
 import PropTypes from 'prop-types';
-import ReviewDashboard from '../reviews/ReviewDashboard';
+import ReviewList from '../reviews/ReviewList';
 import { getCourseByID } from "../../actions/courses";
 import { connect } from 'react-redux';
 
@@ -36,7 +36,7 @@ export class ViewCourse extends Component {
         <h1>{courseCode}: {courseName}</h1>
         <h3>{university}</h3>
         <NewReview courseID={this.state.courseID} courseName={courseName}></NewReview>
-        <ReviewDashboard courseID={this.state.courseID} courseName={courseName}></ReviewDashboard>
+        <ReviewList courseID={this.state.courseID} courseName={courseName}></ReviewList>
       </div>
     )
   }
