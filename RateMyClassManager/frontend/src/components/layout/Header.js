@@ -25,28 +25,21 @@ class Header extends Component {
         <ul className="navbar-nav mr-auto">
 
           <li className="nav-item">
-          <Link to="/courses" className ="nav-link">
-          All Courses
-          </Link>
+            <Link to="/courses" className ="nav-link">
+            All Courses
+            </Link>
           </li>
           <li className="nav-item">
-          <Link to="/addcourse" className ="nav-link">
-          Add Course
-          </Link>
+            <Link to="/findcourses" className ="nav-link">
+            Find Courses
+            </Link>
           </li>
           <li className="nav-item">
-          <Link to="/findcourses" className ="nav-link">
-          Find Courses
-          </Link>
+            <Link to="/addcourse" className ="nav-link">
+            Add Course
+            </Link>
           </li>
-
-
-          </ul>
-        {/*
-        <form className="form-inline my-2 my-lg-1 ">
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>*/}
+        </ul>
 
         <ul className="navbar-nav ml-3">
         <li className="nav-item">
@@ -70,26 +63,29 @@ class Header extends Component {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-
           <li className="nav-item">
-          <Link to="/courses" className ="nav-link">
-          Courses
-          </Link>
+            <Link to="/courses" className ="nav-link">
+            All Courses
+            </Link>
           </li>
-
-
-          </ul>
-        <form className="form-inline my-2 my-lg-1 ">
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+          <li className="nav-item">
+            <Link to="/findcourses" className ="nav-link">
+            Find Courses
+            </Link>
+          </li>
+        </ul>
 
         <ul className="navbar-nav ml-3">
-        <li className="nav-item">
-          <Link to="/login" className ="nav-link">
-          Login
-          </Link>
-        </li>
+          <li className="nav-item">
+            <Link to="/login" className ="nav-link">
+            Login
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/register" className ="nav-link">
+            Register
+            </Link>
+          </li>
         </ul>
 
       </div>

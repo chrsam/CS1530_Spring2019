@@ -3,9 +3,7 @@ import NewReview from "../reviews/NewReview";
 import PropTypes from 'prop-types';
 import ReviewDashboard from '../reviews/ReviewDashboard';
 import { getCourseByID } from "../../actions/courses";
-import {connect } from 'react-redux';
-
-
+import { connect } from 'react-redux';
 
 export class ViewCourse extends Component {
 
@@ -24,14 +22,19 @@ export class ViewCourse extends Component {
 
   render() {
     var courseName = "";
+    var courseCode = "";
+    var university = "";
     if (this.props.courses && this.props.courses[0] && this.props.courses[0][0]){ // null checks
       courseName = this.props.courses[0][0].name;
-      console.log(this.props.courses[0][0]);
+      courseCode = this.props.courses[0][0].class_code;
+      university = this.props.courses[0][0].university;
     }
     
     return (
       <div>
-        <h1>{courseName}</h1>
+        <br/>
+        <h1>{courseCode}: {courseName}</h1>
+        <h3>{university}</h3>
         <NewReview courseID={this.state.courseID} courseName={courseName}></NewReview>
         <ReviewDashboard courseID={this.state.courseID} courseName={courseName}></ReviewDashboard>
       </div>
