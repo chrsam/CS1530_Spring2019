@@ -9,7 +9,6 @@ export class AddCourse extends Component {
   state = {
     name: '',
     university: '',
-    prof: '',
     class_code: '',
     submitted: false
   }
@@ -22,20 +21,19 @@ export class AddCourse extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { name , university, prof, class_code} = this.state
-    const course = { name, university, prof, class_code}
+    const { name , university, class_code} = this.state
+    const course = { name, university, class_code}
     this.props.addCourse(course);
     this.setState({
       name: "",
       university: "",
-      prof: "",
       class_code: "",
       review: "",
       submitted: true
     });
   }
   render () {
-    const {name, university, prof, class_code} = this.state;
+    const {name, university, class_code} = this.state;
     const {isAuthenticated} = this.props.auth
 
     const guestLinks = (
@@ -63,10 +61,6 @@ export class AddCourse extends Component {
             <input className = "form-control" placeholder="eg. University of Pittsburgh" type = "text" name = "university" onChange = {this.onChange} value = {university} />
           </div>
           <div className = "form-group">
-            <label>Professor</label>
-            <input className = "form-control" placeholder="eg. John Smith" type = "text" name = "prof" onChange = {this.onChange} value = {prof} />
-          </div>
-          <div className = "form-group">
             <label>Course Code</label>
             <input className = "form-control" placeholder="eg. CS1530" type = "text" name = "class_code" onChange = {this.onChange} value = {class_code} />
           </div>
@@ -91,8 +85,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {addCourse})(AddCourse)
-
-// <div class="form-group form-check">
-//   <input type="checkbox" class="form-check-input" id="exampleCheck1">
-//   <label class="form-check-label" for="exampleCheck1">Check me out</label>
-// </div>

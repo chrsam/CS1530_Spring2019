@@ -33,7 +33,6 @@ export class CourseList extends Component {
               <div className="card-body">
                 <ul>
                   <h5 className="card-title">{course.university}</h5>
-                  <h5> Professor: {course.prof}</h5>
                   <h5> Course Code: {course.class_code}</h5>
                 </ul>
               </div>
@@ -62,7 +61,6 @@ export class CourseList extends Component {
               <div className="card-body">
                 <ul>
                   <h5 className="card-title">{course.university}</h5>
-                  <h5> Professor: {course.prof}</h5>
                   <h5> Course Code: {course.class_code}</h5>
                 </ul>
               </div>
@@ -89,5 +87,5 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { getCourses, deleteCourse})(CourseList)
+export default connect(mapStateToProps, { getCourses, deleteCourse })(CourseList)
 
