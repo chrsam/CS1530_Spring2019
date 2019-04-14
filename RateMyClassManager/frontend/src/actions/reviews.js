@@ -1,13 +1,11 @@
 import axios from 'axios';
 import { ADD_REVIEW, DELETE_REVIEW, GET_REVIEWS_BY_COURSE_ID } from './types';
+import { tokenConfig } from './auth';
 
 // GET REVIEWS BY COURSE ID
-export const getReviewsByCourseID = (courseID) => dispatch => {
-    console.log("getting reviews...");
-    axios.get('/api/reviews?course_id=' + courseID)
+export const getReviewsByCourseID = (courseID) => (dispatch, getState) => {
+    axios.get('/api/reviews?course_id=' + courseID, tokenConfig(getState))
         .then(response => {
-            console.log("review action got response");
-            console.log(response.data);
             dispatch({
                 type: GET_REVIEWS_BY_COURSE_ID,
                 payload: response.data
@@ -17,8 +15,8 @@ export const getReviewsByCourseID = (courseID) => dispatch => {
 }
 
 // ADD REVIEW
-export const addReview = (review) => dispatch => {
-    axios.post("/api/reviews/", review)
+export const addReview = (review) => (dispatch, getState) => {
+    axios.post("/api/reviews/", review, tokenConfig(getState))
         .then(response => {
             dispatch({
                 type: ADD_REVIEW,
@@ -29,7 +27,7 @@ export const addReview = (review) => dispatch => {
 }
 
 // DELETE REVIEW
-export const deleteReview = (id) => dispatch => {
+export const deleteReview = (id) => (dispatch, getState) => {
     axios.delete(`/api/courses/${id}/`)
         .then(response => {
             dispatch({

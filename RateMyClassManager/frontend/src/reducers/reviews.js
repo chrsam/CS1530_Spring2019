@@ -7,10 +7,8 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-    console.log("switch!");
     switch(action.type) {
         case GET_REVIEWS_BY_COURSE_ID:
-            console.log("reviews reducer get reviews");
             return {
                 ...state,
                 reviews: action.payload

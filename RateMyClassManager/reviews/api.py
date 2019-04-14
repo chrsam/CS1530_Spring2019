@@ -20,6 +20,8 @@ class ReviewViewSet(viewsets.ModelViewSet):
         else:
             queryset = Review.objects.none()
         return queryset
-    #
-    # def perform_create(self, serializer):
-    #     serializer.save(owner = self.request.user)
+    
+    def perform_create(self, serializer):
+        if self.request.user.is_authenticated: # TODO: check if this user already reviews this course
+            course = Course.objects.get(id = self.request.data['course'])
+            serializer.save(owner = self.request.user, course = course)

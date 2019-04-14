@@ -23,10 +23,10 @@ export class NewReview extends Component {
         event.preventDefault();
         const { numStars, professor, reviewText } = this.state;
         const review = {
-            num_stars: numStars,
+            rating: numStars,
             professor: professor,
-            review_text: reviewText, 
-            course_id: this.props.courseID
+            review: reviewText, 
+            course: this.props.courseID
         };
         this.props.addReview(review)
         this.setState({
