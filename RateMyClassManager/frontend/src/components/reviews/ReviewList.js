@@ -30,10 +30,9 @@ export class ReviewList extends Component {
                   </h3>
                 </div>
                 <div className="card-body">
-                  <ul>
-                    <li>Professor: {review.professor}</li>
-                    <li>{review.review}</li>
-                  </ul>
+                    <div>Professor: {review.professor}</div>
+                    {review.tag_list.map(tag => (<span className="badge badge-info mr-1 ml-1">{tag}</span>))}
+                    <p className="mt-5">{review.review}</p>
                 </div>
               </div>
             </div>

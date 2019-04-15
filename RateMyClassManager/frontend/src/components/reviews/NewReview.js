@@ -9,7 +9,37 @@ export class NewReview extends Component {
     state = {
         numStars: 0,
         professor: '',
-        reviewText: ''
+        reviewText: '',
+        tags: []
+    }
+
+    tagOptions = [
+        "easy",
+        "hard",
+        "homework heavy",
+        "project heavy",
+        "exam heavy",
+        "lecture heavy",
+        "interesting",
+        "useful"
+    ];
+
+
+    addTag(tagOption) {
+        if (this.state.tags.length < 3) {
+            if (!this.state.tags.includes(tagOption)) {
+                this.state.tags.push(tagOption);
+            }
+            this.forceUpdate();
+        }
+    }
+
+    removeTag(tagOption) {
+        var index = this.state.tags.indexOf(tagOption);
+        if (index > -1) {
+            this.state.tags.splice(index, 1);
+        }
+        this.forceUpdate();
     }
 
     static propTypes = {
@@ -21,18 +51,20 @@ export class NewReview extends Component {
 
     onSubmit = event => {
         event.preventDefault();
-        const { numStars, professor, reviewText } = this.state;
+        const { numStars, professor, reviewText, tags } = this.state;
         const review = {
             rating: numStars,
-            professor: professor,
+            professor,
             review: reviewText, 
+            tags: tags.join(","),
             course: this.props.courseID
         };
         this.props.addReview(review)
         this.setState({
             numStars: 0,
             professor: '',
-            reviewText: ''
+            reviewText: '',
+            tags: ''
         })
     }
 
@@ -43,7 +75,7 @@ export class NewReview extends Component {
       }
 
   render() {
-    const { reviewText, professor } = this.state;
+    const { reviewText, professor, tags } = this.state;
     const {isAuthenticated} = this.props.auth
 
     const authLinks = (
@@ -57,6 +89,22 @@ export class NewReview extends Component {
                 <div className="form-group">
                     <label>Which professor did you have for this class?</label>
                     <input type="text" className="form-control" name="professor" onChange={this.onChange} value={professor} style={{width: "40%"}}/>
+                </div>
+                <div className="form-group">
+                    <div>Tags (select up to 3):</div>
+                    {this.tagOptions.map(tagOption => {
+                        if (!tags.includes(tagOption)) {
+                            return (
+                                <span className="badge badge-light mr-1 ml-1" onClick={() => this.addTag(tagOption)}>{tagOption}</span>
+                            );
+                        }
+                        else {      
+                            console.log(tags);                      
+                            return (
+                                <span className="badge badge-primary mr-1 ml-1" onClick={() => this.removeTag(tagOption)}>{tagOption}</span>
+                            );
+                        }
+                    })}
                 </div>
                 <div className="form-group">
                     <label>Review:</label>

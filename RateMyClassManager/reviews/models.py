@@ -7,6 +7,7 @@ class Review(models.Model):
     rating = models.IntegerField()
     professor = models.CharField(max_length=50)
     review = models.CharField(max_length=1000)
+    tags = models.CharField(max_length=75)
     course = models.ForeignKey(Course, related_name = "reviews", on_delete = models.CASCADE)
     owner = models.ForeignKey(User, related_name = "reviews", on_delete = models.CASCADE)
 
