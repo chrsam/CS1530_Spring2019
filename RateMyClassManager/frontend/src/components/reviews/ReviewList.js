@@ -19,28 +19,26 @@ export class ReviewList extends Component {
     return (
       <Fragment>
         <div className = "container ml-3 mr-3">
-        <br/>
-        <h2>Reviews</h2>
-        {this.props.reviews.map(review => (
-          <div className = "container ml-3 mr-3 mt-3 mb-3">
-            <div className="card shadow p-3 mb-5 bg-white rounded">
-              <div className="card-header">
-                <h3>Author: {review.author}</h3>
-              </div>
-              <div className="card-body">
-                <ul>
-                  <li>Rating: {review.rating} stars</li>
-                  <li>Professor: {review.professor}</li>
-                  <li> {review.review}</li>
-                </ul>
+          <h2>Reviews</h2>
+          {this.props.reviews.map(review => (
+            <div className = "container ml-3 mr-3 mt-3 mb-3">
+              <div className="card shadow p-3 mb-5 bg-white rounded">
+                <div className="card-header">
+                  <h3>
+                    {[...Array(review.rating)].map((x, i) =><span>⭐</span>)}
+                    from {review.author}
+                  </h3>
+                </div>
+                <div className="card-body">
+                  <ul>
+                    <li>Professor: {review.professor}</li>
+                    <li>{review.review}</li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-        <br/>
-      </div>
-
-
+          ))}
+        </div>
       </Fragment>
     )
   }
