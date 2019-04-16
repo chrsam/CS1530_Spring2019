@@ -37,31 +37,28 @@ export class AddCourse extends Component {
     const {isAuthenticated} = this.props.auth
 
     const guestLinks = (
-        <div className="jumbotron mt-5">
-          <h1 className="display-4">Add a Course Review</h1>
-          <p className="lead">As a member of Rate My Course, you are able to review a course that you are currently taking or have taken in the past.</p>
-          <hr className="my-4" />
-          <p>Want to create a review for a course? Join now!</p>
-          <button className="btn btn-success btn-lg text-light" href="#" role="button">
-          <Link to="/register" className = "text-light">Join Now!</Link>
-          </button>
+        <div>
+          <Redirect to="/login" className = "text-light"/>
         </div>
     )
 
     const authLinks = (
+      <div className="jumbotron">
+      <h1 className="display-4"> Add a New Course</h1>
+      <h3 className="lead">Did not see your course? Add a new course here!</h3>
+      <hr className="my-4"/>
       <div className = "card card-body mt-5 mb-5">
-        <h2>Add a New Course</h2>
         <form onSubmit = {this.onSubmit}>
           <div className = "form-group">
-            <label>Course Name</label>
+            <h5>Course Name</h5>
             <input className = "form-control" placeholder="eg. Software Engineering" type = "text" name = "name" onChange = {this.onChange} value = {name} />
           </div>
           <div className = "form-group">
-            <label>University</label>
+            <h5>University</h5>
             <input className = "form-control" placeholder="eg. University of Pittsburgh" type = "text" name = "university" onChange = {this.onChange} value = {university} />
           </div>
           <div className = "form-group">
-            <label>Course Code</label>
+            <h5>Course Code</h5>
             <input className = "form-control" placeholder="eg. CS1530" type = "text" name = "class_code" onChange = {this.onChange} value = {class_code} />
           </div>
 
@@ -70,10 +67,11 @@ export class AddCourse extends Component {
           </div>
 
         </form>
+        </div>
       </div>
     )
     return (
-      <div className= "container">
+      <div>
       {this.state.submitted ? (<Redirect to={"/viewcourse/" + 1}/>) : (isAuthenticated ? authLinks: guestLinks)}
       </div>
 

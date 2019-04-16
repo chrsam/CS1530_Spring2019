@@ -49,7 +49,7 @@ export class Homepage extends Component {
         <h1 className="display-4">Welcome back to Rate My Class!</h1>
         <hr className="my-4" />
 
-        
+
       </div>
     )
     return (

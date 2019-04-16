@@ -34,16 +34,19 @@ export class ViewCourse extends Component {
       averageRating = this.props.courses[0][0].average_rating;
       tags = this.props.courses[0][0].tags;
     }
-    
+
     return (
       <div>
-        <br/>
-        <h1>{courseCode}: {courseName}</h1>
-        <h3>{university}</h3>
-        {averageRating ? (<h3>Average user rating: {Math.round(averageRating * 100) / 100} stars</h3>) : (<h3>No reviews yet</h3>)}
-        {tags.length > 0 ? (<h3>Tagged as: {tags.map(tag => (<span className="badge badge-info mr-1 ml-1">{tag}</span>))}</h3>) : (<h3>No tags yet</h3>)}
+      <div className = "jumbotron">
+        <h1 className="display-4">{courseCode}: {courseName}</h1>
+        <h2>{university}</h2>
+        {averageRating ? (<h3 className="lead">Average user rating: {Math.round(averageRating * 100) / 100} stars</h3>) : (<h3 className="lead">No reviews yet</h3>)}
+        {tags.length > 0 ? (<h3 className="lead">Tagged as: {tags.map(tag => (<span className="badge badge-success badge-pill mr-1 ml-1">{tag}</span>))}</h3>) : (<h3 className="lead">No tags yet</h3>)}
+        <hr className="my-4"/>
         <NewReview courseID={this.state.courseID} courseName={courseName}></NewReview>
-        <ReviewList courseID={this.state.courseID} courseName={courseName}></ReviewList>
+
+      </div>
+      <ReviewList courseID={this.state.courseID} courseName={courseName}></ReviewList>
       </div>
     )
   }
