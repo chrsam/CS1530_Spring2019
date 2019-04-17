@@ -15,12 +15,8 @@ export class CourseList extends Component {
       courseName: '',
       university: '',
       courseCode: '',
-<<<<<< HEAD
       gen_ed:'',
       minRating: ''
-=======
-      minRating: ''
->>>>>>> 16e7198d3ffd8334b85faa57d24f847cfaccecaf
   }
 
   componentDidMount() {
@@ -112,8 +108,6 @@ export class CourseList extends Component {
                 <label for="courseCode">Course Code:</label>
                 <input type="text" className="form-control" name="courseCode" onChange={this.onChange} value={courseCode}/>
               </div>
-<<<<<<< HEAD
-
               <div className="form-group mb-3">
                 <select className="custom-select" name="gen_ed" onChange={this.onChange}>
                   <option selected>Class Type</option>
@@ -122,19 +116,13 @@ export class CourseList extends Component {
                   ))}
                 </select>
               </div>
-
-              <div className="form-group">
-                  <button type="submit" className="btn btn-block btn-outline-success">Filter</button>
-=======
               <div className="form-group mb-3">
                 <label for="courseCode">Minimum Star Rating:</label>
                 <input type="text" className="form-control" name="minRating" onChange={this.onChange} value={minRating} style={{width: "20%"}}/>
->>>>>>> 16e7198d3ffd8334b85faa57d24f847cfaccecaf
               </div>
+              <div className="form-group">
+                  <button type="submit" className="btn btn-block btn-outline-success">Filter</button>
             </form>
-
-
-
             </div>
           <div className="col-10">
             {this.props.courses.filter(course => {
