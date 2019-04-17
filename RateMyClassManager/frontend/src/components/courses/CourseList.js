@@ -120,8 +120,6 @@ export class CourseList extends Component {
                 <label for="courseCode">Minimum Star Rating:</label>
                 <input type="text" className="form-control" name="minRating" onChange={this.onChange} value={minRating} style={{width: "20%"}}/>
               </div>
-              <div className="form-group">
-                  <button type="submit" className="btn btn-block btn-outline-success">Filter</button>
             </form>
             </div>
           <div className="col-10">

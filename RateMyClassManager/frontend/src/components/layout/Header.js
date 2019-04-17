@@ -25,11 +25,6 @@ class Header extends Component {
 
           <li className="nav-item">
             <Link to="/courses" className ="nav-link">
-            All Courses
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/findcourses" className ="nav-link">
             Find Courses
             </Link>
           </li>
@@ -64,11 +59,6 @@ class Header extends Component {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to="/courses" className ="nav-link">
-            All Courses
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/findcourses" className ="nav-link">
             Find Courses
             </Link>
           </li>
