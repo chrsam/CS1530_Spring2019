@@ -15,6 +15,7 @@ export class CourseList extends Component {
       courseName: '',
       university: '',
       courseCode: '',
+      gen_ed:'',
       minRating: ''
   }
 
@@ -25,7 +26,7 @@ export class CourseList extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { courseName, university, courseCode } = this.state;
+    const { courseName, university, courseCode, gen_ed } = this.state;
     // const filters = {
     //   inputName: courseName,
     //   inputUniversity: university,
@@ -68,6 +69,7 @@ export class CourseList extends Component {
                 <h5 className="card-title">{course.university}</h5>
                 <h5 className="card-title">Average rating: {Math.round(course.average_rating * 100) / 100} stars</h5>
                 <h5 className="card-title">{course.num_reviews} reviews</h5>
+                <h5 className="card-title">Class Type: {course.gen_ed}</h5>
               </ul>
             </div>
           </div>
@@ -107,13 +109,20 @@ export class CourseList extends Component {
                 <input type="text" className="form-control" name="courseCode" onChange={this.onChange} value={courseCode}/>
               </div>
               <div className="form-group mb-3">
+                <select className="custom-select" name="gen_ed" onChange={this.onChange}>
+                  <option selected>Class Type</option>
+                  {this.props.courses.map(course => (
+                    <option value={course.gen_ed}>{course.gen_ed}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group mb-3">
                 <label for="courseCode">Minimum Star Rating:</label>
                 <input type="text" className="form-control" name="minRating" onChange={this.onChange} value={minRating} style={{width: "20%"}}/>
               </div>
+              <div className="form-group">
+                  <button type="submit" className="btn btn-block btn-outline-success">Filter</button>
             </form>
-
-
-
             </div>
           <div className="col-10">
             {this.props.courses.filter(course => {
@@ -145,6 +154,7 @@ export class CourseList extends Component {
                   <div className="card-body">
                     <ul>
                       <h5 className="card-title">{course.university}</h5>
+                      <h5 className="card-title">Class Type: {course.gen_ed}</h5>
                       <h5 className="card-title">Average rating: {Math.round(course.average_rating * 100) / 100} stars</h5>
                       <h5 className="card-title">{course.num_reviews} reviews</h5>
                     </ul>

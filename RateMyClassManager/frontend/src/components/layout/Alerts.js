@@ -15,6 +15,7 @@ export class Alerts extends Component {
       if (error.msg.name) alert.error(`Name: ${error.msg.name.join()}`)
       if (error.msg.university) alert.error(`University: ${error.msg.university.join()}`)
       if (error.msg.class_code) alert.error(`Course Code: ${error.msg.class_code.join()}`)
+      if (error.msg.gen_ed) alert.error(`Class Type: ${error.msg.gen_ed.join()}`)
       if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join())
       if (error.msg.username) alert.error(error.msg.username.join())
     }

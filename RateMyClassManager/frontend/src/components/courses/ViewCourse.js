@@ -25,12 +25,14 @@ export class ViewCourse extends Component {
     var courseName = "";
     var courseCode = "";
     var university = "";
+    var gen_ed = "";
     var averageRating = -1;
     var tags = [];
     if (this.props.courses && this.props.courses[0] && this.props.courses[0][0]){ // null checks
       courseName = this.props.courses[0][0].name;
       courseCode = this.props.courses[0][0].class_code;
       university = this.props.courses[0][0].university;
+      gen_ed = this.props.courses[0][0].gen_ed;
       averageRating = this.props.courses[0][0].average_rating;
       tags = this.props.courses[0][0].tags;
     }
@@ -40,6 +42,7 @@ export class ViewCourse extends Component {
       <div className = "jumbotron">
         <h1 className="display-4">{courseCode}: {courseName}</h1>
         <h2>{university}</h2>
+        <h2>{gen_ed}</h2>
         {averageRating ? (<h3 className="lead">Average user rating: {Math.round(averageRating * 100) / 100} stars</h3>) : (<h3 className="lead">No reviews yet</h3>)}
         {tags.length > 0 ? (<h3 className="lead">Tagged as: {tags.map(tag => (<span className="badge badge-success badge-pill mr-1 ml-1">{tag}</span>))}</h3>) : (<h3 className="lead">No tags yet</h3>)}
         <hr className="my-4"/>

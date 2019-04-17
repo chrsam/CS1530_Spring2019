@@ -33,5 +33,5 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
-        fields = ('id', 'name', 'university', 'class_code', 'average_rating', 'num_reviews', 'tags')
+        fields = ('id', 'name', 'university', 'class_code', 'gen_ed', 'average_rating', 'num_reviews', 'tags')
 
