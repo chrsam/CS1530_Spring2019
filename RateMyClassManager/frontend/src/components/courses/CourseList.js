@@ -43,7 +43,7 @@ export class CourseList extends Component {
 
   render () {
     const {isAuthenticated} = this.props.auth
-    const { courseName, university, courseCode, minRating } = this.state;
+    const { courseName, university, courseCode, minRating, gen_ed } = this.state;
     const guestLinks = (
       <div className= "jumbotron">
       <h1 className="display-4">All Courses</h1>
@@ -109,12 +109,8 @@ export class CourseList extends Component {
                 <input type="text" className="form-control" name="courseCode" onChange={this.onChange} value={courseCode}/>
               </div>
               <div className="form-group mb-3">
-                <select className="custom-select" name="gen_ed" onChange={this.onChange}>
-                  <option selected>Class Type</option>
-                  {this.props.courses.map(course => (
-                    <option value={course.gen_ed}>{course.gen_ed}</option>
-                  ))}
-                </select>
+                <label for="courseCode">Gen ed requirements:</label>
+                <input type="text" className="form-control" name="gen_ed" onChange={this.onChange} value={gen_ed}/>
               </div>
               <div className="form-group mb-3">
                 <label for="courseCode">Minimum Star Rating:</label>
@@ -129,6 +125,8 @@ export class CourseList extends Component {
                   if (courseName != "" && !course.name.toLowerCase().includes(courseName.toLowerCase()))
                     return false;
                   if (courseCode != "" && !course.class_code.toLowerCase().includes(courseCode.toLowerCase()))
+                    return false;
+                  if (gen_ed != "" && (!course.gen_ed || !course.gen_ed.toLowerCase().includes(gen_ed.toLowerCase())))
                     return false;
                   let minStarRating = parseInt(minRating);
                   if (!isNaN(minStarRating) && course.average_rating < minStarRating)
