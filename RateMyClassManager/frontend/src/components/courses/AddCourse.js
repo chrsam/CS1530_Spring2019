@@ -10,6 +10,7 @@ export class AddCourse extends Component {
     name: '',
     university: '',
     class_code: '',
+    gen_ed: '',
     submitted: false
   }
 
@@ -21,19 +22,20 @@ export class AddCourse extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { name , university, class_code} = this.state
-    const course = { name, university, class_code}
+    const { name , university, class_code, gen_ed} = this.state
+    const course = { name, university, class_code, gen_ed}
     this.props.addCourse(course);
     this.setState({
       name: "",
       university: "",
       class_code: "",
+      gen_ed:"",
       review: "",
       submitted: true
     });
   }
   render () {
-    const {name, university, class_code} = this.state;
+    const {name, university, class_code, gen_ed} = this.state;
     const {isAuthenticated} = this.props.auth
 
     const guestLinks = (
@@ -60,6 +62,10 @@ export class AddCourse extends Component {
           <div className = "form-group">
             <h5>Course Code</h5>
             <input className = "form-control" placeholder="eg. CS1530" type = "text" name = "class_code" onChange = {this.onChange} value = {class_code} />
+          </div>
+          <div className = "form-group">
+            <h5>Class Type (i.e. gen-ed, core class, etc.)</h5>
+            <input className = "form-control" placeholder="eg. elective" type = "text" name = "gen_ed" onChange = {this.onChange} value = {gen_ed} />
           </div>
 
           <div className = "form-group">
