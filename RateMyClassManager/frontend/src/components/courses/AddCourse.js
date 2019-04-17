@@ -13,9 +13,16 @@ export class AddCourse extends Component {
     submitted: false
   }
 
+  componentWillMount() {
+    this.props.courses.requestFulfilled = false;
+    this.props.courses.courses = [];
+  }
+
+
   static propTypes = {
     addCourse: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    courses: PropTypes.object.isRequired
    }
   onChange = event => this.setState({ [event.target.name]: event.target.value })
 
@@ -29,12 +36,15 @@ export class AddCourse extends Component {
       university: "",
       class_code: "",
       review: "",
-      submitted: true
+      submitted: false
     });
   }
   render () {
+    if (this.props.courses.courses)
+      console.log(this.props.courses.courses[0]);
+
     const {name, university, class_code} = this.state;
-    const {isAuthenticated} = this.props.auth
+    const {isAuthenticated} = this.props.auth;
 
     const guestLinks = (
         <div>
@@ -72,14 +82,15 @@ export class AddCourse extends Component {
     )
     return (
       <div>
-      {this.state.submitted ? (<Redirect to={"/viewcourse/" + 1}/>) : (isAuthenticated ? authLinks: guestLinks)}
+      {(this.props.courses.requestFulfilled) ? (<Redirect to={"/viewcourse/" + this.props.courses.courses[0]["id"]}/>) : (isAuthenticated ? authLinks: guestLinks)}
       </div>
 
     )
   }
 }
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  courses: state.courses
 })
 
 export default connect(mapStateToProps, {addCourse})(AddCourse)

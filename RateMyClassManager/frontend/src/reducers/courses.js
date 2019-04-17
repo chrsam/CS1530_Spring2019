@@ -23,6 +23,7 @@ export default function(state = initialState, action) {
         courses: state.courses.filter(course => course.id !== action.payload)
       }
     case ADD_COURSE:
+      state.requestFulfilled = true;
       return {
         ...state,
         courses: [...state.courses, action.payload]

@@ -56,7 +56,6 @@ export const addCourse = course => (dispatch, getState)  => {
       type: ADD_COURSE,
       payload: res.data
     })
-    console.log(res.data);
   })
   .catch(err =>
     dispatch(returnErrors(err.response.data, err.response.status))
