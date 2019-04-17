@@ -40,7 +40,7 @@ export class Login extends Component {
             </div>
             <div className = "form-group">
               <label>Password</label>
-              <input className = "form-control" type = "text" name = "password" onChange = {this.onChange} value = {password} />
+              <input className = "form-control" type = "password" name = "password" onChange = {this.onChange} value = {password} />
             </div>
             <div className = "form-group">
               <button type="sumbit" className = "btn btn-outline-success btn-lg btn-block"> Login </button>

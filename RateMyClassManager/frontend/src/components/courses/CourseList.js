@@ -14,13 +14,13 @@ export class CourseList extends Component {
   state = {
       courseName: '',
       university: '',
-      courseCode: ''
+      courseCode: '',
+      minRating: ''
   }
 
   componentDidMount() {
     this.props.getCourses(),
     console.log(this.state)
-
   }
 
   onSubmit = event => {
@@ -42,6 +42,7 @@ export class CourseList extends Component {
 
   render () {
     const {isAuthenticated} = this.props.auth
+    const { courseName, university, courseCode, minRating } = this.state;
     const guestLinks = (
       <div className= "jumbotron">
       <h1 className="display-4">All Courses</h1>
@@ -94,33 +95,20 @@ export class CourseList extends Component {
             <hr className = "my-2"/>
             <form onSubmit={this.onSubmit}>
               <div className="form-group mb-3">
-                <select className="custom-select" name= "courseName" onChange = {this.onChange}>
-                <option selected>Course Name</option>
-                {this.props.courses.map(course => (
-                  <option value={course.name}>{course.name}</option>
-                ))}
-                </select>
-
+                <label for="university">University Name:</label>
+                <input type="text" className="form-control" name="university" onChange={this.onChange} value={university}/>
               </div>
               <div className="form-group mb-3">
-                <select className="custom-select" name="university" onChange= {this.onChange}>
-                  <option selected>University</option>
-                  {this.props.courses.map(course => (
-                    <option value={course.university}>{course.university}</option>
-                  ))}
-                </select>
+                <label for="courseName">Course Name:</label>
+                <input type="text" className="form-control" name="courseName" onChange={this.onChange} value={courseName}/>
               </div>
               <div className="form-group mb-3">
-                <select className="custom-select" name="courseCode" onChange={this.onChange}>
-                  <option selected>Course Code</option>
-                  {this.props.courses.map(course => (
-                    <option value={course.class_code}>{course.class_code}</option>
-                  ))}
-                </select>
+                <label for="courseCode">Course Code:</label>
+                <input type="text" className="form-control" name="courseCode" onChange={this.onChange} value={courseCode}/>
               </div>
-
-              <div className="form-group">
-                  <button type="submit" className="btn btn-block btn-outline-success">Filter</button>
+              <div className="form-group mb-3">
+                <label for="courseCode">Minimum Star Rating:</label>
+                <input type="text" className="form-control" name="minRating" onChange={this.onChange} value={minRating} style={{width: "20%"}}/>
               </div>
             </form>
 
@@ -128,7 +116,18 @@ export class CourseList extends Component {
 
             </div>
           <div className="col-10">
-            {this.props.courses.map(course => (
+            {this.props.courses.filter(course => {
+                  if (university != "" && !course.university.toLowerCase().includes(university.toLowerCase()))
+                    return false;
+                  if (courseName != "" && !course.name.toLowerCase().includes(courseName.toLowerCase()))
+                    return false;
+                  if (courseCode != "" && !course.class_code.toLowerCase().includes(courseCode.toLowerCase()))
+                    return false;
+                  let minStarRating = parseInt(minRating);
+                  if (!isNaN(minStarRating) && course.average_rating < minStarRating)
+                    return false;
+                  return true;
+                }).map(course => (
               <div className = "container ml-3 mr-3 mt-3 mb-3">
                 <div className="card shadow p-3 mb-5 bg-white rounded" >
 
