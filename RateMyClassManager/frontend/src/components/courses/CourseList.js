@@ -27,12 +27,6 @@ export class CourseList extends Component {
   onSubmit = event => {
     event.preventDefault();
     const { courseName, university, courseCode, gen_ed } = this.state;
-    // const filters = {
-    //   inputName: courseName,
-    //   inputUniversity: university,
-    //   inputCourse: courseCode
-    // }
-    console.log(this.state)
     this.render()
   }
 
@@ -42,8 +36,23 @@ export class CourseList extends Component {
 
 
   render () {
-    const {isAuthenticated} = this.props.auth
+    const {isAuthenticated, user, isAdmin} = this.props.auth
     const { courseName, university, courseCode, minRating, gen_ed } = this.state;
+    const showDelete = course => (
+      <div className="float-right ml-3">
+      <button onClick={this.props.deleteCourse.bind(this, course.id)} className = "btn btn-outline-dark text-dark">
+      Delete
+      </button>
+      </div>
+
+    );
+
+    const hideDelete = (
+      <div className="float-right">
+
+      </div>
+    );
+
     const guestLinks = (
       <div className= "jumbotron">
       <h1 className="display-4">All Courses</h1>
@@ -138,6 +147,7 @@ export class CourseList extends Component {
 
                   <div className="card-header">
                     <h3>{course.class_code}: {course.name}
+                    {isAdmin ? showDelete(course) : hideDelete}
                     <div className = "float-right">
                     <button className = "btn btn-outline-dark text-dark">
                     <Link to={"/viewcourse/" + course.id} className="text-dark">
