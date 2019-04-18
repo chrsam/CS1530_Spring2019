@@ -132,6 +132,8 @@ export class CourseList extends Component {
                   if (!isNaN(minStarRating) && course.average_rating < minStarRating)
                     return false;
                   return true;
+                }).sort((courseA, courseB) => {
+                  return courseB.average_rating - courseA.average_rating;
                 }).map(course => (
               <div className = "container ml-3 mr-3 mt-3 mb-3">
                 <div className="card shadow p-3 mb-5 bg-white rounded" >
