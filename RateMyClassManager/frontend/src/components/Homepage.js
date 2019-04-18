@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {Link, Redirect} from "react-router-dom";
 import Login from "./accounts/Login";
+import AddCourse from "./courses/AddCourse"
 
 export class Homepage extends Component {
   //
@@ -37,20 +38,24 @@ export class Homepage extends Component {
 
     const guestLinks = (
             <div className="jumbotron mt-5">
-              <h1 className="display-4">Welcome to Rate My Class</h1>
-              <p className="lead">An application where students can add their courses and reviews on the course to share with other fellow students.</p>
+              <h1 className="display-3 text-center">Welcome to Rate My Class</h1>
+              <p className="lead text-center">An application where students can add their courses and reviews on the course to share with other fellow students.</p>
               <hr className="my-4" />
               <Login />
             </div>
     )
 
     const authLinks = (
-      <div className="jumbotron mt-5">
-        <h1 className="display-4">Welcome back to Rate My Class!</h1>
-        <hr className="my-4" />
-
-
+      <div>
+      <div className="jumbotron">
+        <h1 className="display-3 text-right">Welcome back to Rate My Class!</h1>
+        <p className="lead text-right">An application where students can add their courses and reviews on the course to share with other fellow students.</p>
       </div>
+        <AddCourse />
+      </div>
+
+
+
     )
     return (
       <div className= "container">

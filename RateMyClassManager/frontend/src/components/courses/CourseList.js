@@ -33,8 +33,7 @@ export class CourseList extends Component {
 
   onChange = event => this.setState({
     [event.target.name]: event.target.value
-  },
-console.log(this.state));
+  });
 
 
   render () {
@@ -184,7 +183,7 @@ console.log(this.state));
         </div>
       </div>
       <hr className="my-4"/>
-      <h4 className="container">Don't see the course you're looking for? </h4>
+      <h4 className="">Don't see the course you're looking for? </h4>
       <button className="btn btn-success btn-lg mt-2">
       <Link to="/addcourse" className="text-white">Click here to add it!</Link>
       </button>
