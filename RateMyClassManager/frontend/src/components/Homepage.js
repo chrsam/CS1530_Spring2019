@@ -48,8 +48,8 @@ export class Homepage extends Component {
     const authLinks = (
       <div>
       <div className="jumbotron">
-        <h1 className="display-3 text-right">Welcome back to Rate My Class!</h1>
-        <p className="lead text-right">An application where students can add their courses and reviews on the course to share with other fellow students.</p>
+        <h1 className="display-3 text-center">Welcome back to Rate My Class!</h1>
+        <p className="lead text-center">An application where students can add their courses and reviews on the course to share with other fellow students.</p>
       </div>
         <AddCourse />
       </div>
