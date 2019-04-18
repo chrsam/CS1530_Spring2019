@@ -16,7 +16,8 @@ export class CourseList extends Component {
       university: '',
       courseCode: '',
       gen_ed:'',
-      minRating: ''
+      minRating: '',
+      searchResult: ''
   }
 
   componentDidMount() {
@@ -26,13 +27,7 @@ export class CourseList extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { courseName, university, courseCode, gen_ed } = this.state;
-    // const filters = {
-    //   inputName: courseName,
-    //   inputUniversity: university,
-    //   inputCourse: courseCode
-    // }
-    console.log(this.state)
+    const { courseName, university, courseCode, gen_ed, searchResult} = this.state;
     this.render()
   }
 
@@ -42,8 +37,23 @@ export class CourseList extends Component {
 
 
   render () {
-    const {isAuthenticated} = this.props.auth
-    const { courseName, university, courseCode, minRating, gen_ed } = this.state;
+    const {isAuthenticated, user, isAdmin} = this.props.auth
+    const { courseName, university, courseCode, minRating, gen_ed, searchResult } = this.state;
+    const showDelete = course => (
+      <div className="float-right ml-3">
+      <button onClick={this.props.deleteCourse.bind(this, course.id)} className = "btn btn-outline-dark text-dark">
+      Delete
+      </button>
+      </div>
+
+    );
+
+    const hideDelete = (
+      <div className="float-right">
+
+      </div>
+    );
+
     const guestLinks = (
       <div className= "jumbotron">
       <h1 className="display-4">All Courses</h1>
@@ -114,12 +124,22 @@ export class CourseList extends Component {
               </div>
               <div className="form-group mb-3">
                 <label for="courseCode">Minimum Star Rating:</label>
-                <input type="text" className="form-control" name="minRating" onChange={this.onChange} value={minRating} style={{width: "20%"}}/>
+                <input type="text" className="form-control" name="minRating" onChange={this.onChange} value={minRating} style={{width: "40%"}}/>
               </div>
             </form>
             </div>
           <div className="col-10">
+            <form>
+            <div className="form-group mb-3 ml-4 mr-4 container ">
+              <input type="text" placeholder="Search..." className="form-control" name="searchResult" onChange={this.onChange} value={searchResult}/>
+            </div>
+            </form>
             {this.props.courses.filter(course => {
+                  if (searchResult != "" && !course.university.toLowerCase().includes(searchResult.toLowerCase())
+                  && !course.name.toLowerCase().includes(searchResult.toLowerCase())
+                  && !course.class_code.toLowerCase().includes(searchResult.toLowerCase())
+                  && !course.gen_ed.toLowerCase().includes(searchResult.toLowerCase()))
+                    return false;
                   if (university != "" && !course.university.toLowerCase().includes(university.toLowerCase()))
                     return false;
                   if (courseName != "" && !course.name.toLowerCase().includes(courseName.toLowerCase()))
@@ -140,6 +160,7 @@ export class CourseList extends Component {
 
                   <div className="card-header">
                     <h3>{course.class_code}: {course.name}
+                    {isAdmin ? showDelete(course) : hideDelete}
                     <div className = "float-right">
                     <button className = "btn btn-outline-dark text-dark">
                     <Link to={"/viewcourse/" + course.id} className="text-dark">
@@ -164,7 +185,7 @@ export class CourseList extends Component {
         </div>
       </div>
       <hr className="my-4"/>
-      <h4 className="container">Don't see the course you're looking for? </h4>
+      <h4 className="">Don't see the course you're looking for? </h4>
       <button className="btn btn-success btn-lg mt-2">
       <Link to="/addcourse" className="text-white">Click here to add it!</Link>
       </button>
@@ -190,4 +211,6 @@ export default connect(mapStateToProps, { getCourses, deleteCourse })(CourseList
 
 
 
-//
+//&& !course.name.toLowerCase().includes(courseName.toLowerCase())
+// && !course.class_code.toLowerCase().includes(courseCode.toLowerCase())
+// && !course.gen_ed.toLowerCase().includes(gen_ed.toLowerCase()))

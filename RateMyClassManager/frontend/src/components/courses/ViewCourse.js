@@ -42,7 +42,7 @@ export class ViewCourse extends Component {
       <div className = "jumbotron">
         <h1 className="display-4">{courseCode}: {courseName}</h1>
         <h2>{university}</h2>
-        <h2>Class type: {gen_ed}</h2>
+        <h4>Class type: {gen_ed}</h4>
         {averageRating ? (<h3 className="lead">Average user rating: {Math.round(averageRating * 100) / 100} stars</h3>) : (<h3 className="lead">No reviews yet</h3>)}
         {tags.length > 0 ? (<h3 className="lead">Tagged as: {tags.map(tag => (<span className="badge badge-success badge-pill mr-1 ml-1">{tag}</span>))}</h3>) : (<h3 className="lead">No tags yet</h3>)}
         <hr className="my-4"/>
